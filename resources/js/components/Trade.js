@@ -9,7 +9,7 @@ const Trade = ({ trade }) => {
                 <td>{ item.hash.slice(20, 25) }</td>
                 {/* Can be replaced by exchange conversion function */}
                 <td>{ item.amount }</td>
-                <td>{ item.method }</td>
+                <td>{ item.payment.method }</td>
             </tr>
         ))
     )

@@ -12,10 +12,4 @@ class Rate extends Model
      * @var string
      */
     protected $table = 'rate';
-
-    public $timestamps = false;
-    protected $hidden = [
-        'created_at',
-        'updated_at'
-    ];
 }

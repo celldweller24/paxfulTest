@@ -9,7 +9,7 @@ const BuyerWithPayment = ({ buyer, trades }) => {
             <td>{ buyer.reputation_positive }</td>
             <td>
                 {/* set unique peyment method values  */}
-                { new Set(trades.map(trade => trade.method + " | ")) }
+                { new Set(trades.map(trade => trade.payment.method + " | ")) }
             </td>
         </tr>
     )

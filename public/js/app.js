@@ -65739,7 +65739,7 @@ var BuyerWithPayment = function BuyerWithPayment(_ref) {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
     scope: "row"
   }, buyer.id), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, buyer.first_name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, buyer.reputation_negative), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, buyer.reputation_positive), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, new Set(trades.map(function (trade) {
-    return trade.method + " | ";
+    return trade.payment.method + " | ";
   }))));
 };
 
@@ -65878,7 +65878,7 @@ var Trade = function Trade(_ref) {
       key: item.id
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
       scope: "row"
-    }, item.id), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, item.status ? 'payed' : 'not payed'), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, item.hash.slice(20, 25)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, item.amount), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, item.method));
+    }, item.id), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, item.status ? 'payed' : 'not payed'), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, item.hash.slice(20, 25)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, item.amount), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, item.payment.method));
   });
 };
 
@@ -66022,8 +66022,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Trade__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/Trade */ "./resources/js/components/Trade.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -66088,11 +66086,12 @@ var Left = /*#__PURE__*/function (_Component) {
       }, "Positive reputation"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         scope: "col"
       }, "Total"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, buyers.map(function (item) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Buyer__WEBPACK_IMPORTED_MODULE_1__["default"], _extends({}, item, {
-          key: item.buyer.id,
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Buyer__WEBPACK_IMPORTED_MODULE_1__["default"], {
+          buyer: item,
+          key: item.id,
           total: item.trade.length,
           handler: _this2.setCurrentBuyer.bind(_this2)
-        }));
+        });
       })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "trade-tabel"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Trades"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
@@ -66108,9 +66107,10 @@ var Left = /*#__PURE__*/function (_Component) {
       }, "Amount"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         scope: "col"
       }, "Method"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, buyers.map(function (item) {
-        return isCurrentBuyer && isCurrentBuyer === item.buyer.id ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Trade__WEBPACK_IMPORTED_MODULE_2__["default"], _extends({
-          key: item.buyer.id
-        }, item)) : null;
+        return isCurrentBuyer && isCurrentBuyer === item.id ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Trade__WEBPACK_IMPORTED_MODULE_2__["default"], {
+          key: item.id,
+          trade: item.trade
+        }) : null;
       })))));
     }
   }]);
@@ -66161,8 +66161,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_BuyerWithPayment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/BuyerWithPayment */ "./resources/js/components/BuyerWithPayment.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -66211,10 +66209,11 @@ var Right = /*#__PURE__*/function (_Component) {
       }, "Positive reputation"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         scope: "col"
       }, "Method"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, data.map(function (item) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_BuyerWithPayment__WEBPACK_IMPORTED_MODULE_2__["default"], _extends({}, item, {
-          key: item.buyer.id,
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_BuyerWithPayment__WEBPACK_IMPORTED_MODULE_2__["default"], {
+          key: item.id,
+          buyer: item,
           trades: item.trade
-        }));
+        });
       })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Chat__WEBPACK_IMPORTED_MODULE_1__["default"], null));
     }
   }]);

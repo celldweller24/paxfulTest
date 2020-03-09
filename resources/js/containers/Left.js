@@ -36,8 +36,8 @@ export default class Left extends Component {
                         {
                             buyers.map(item => (
                                 <Buyer
-                                    { ...item }
-                                    key={ item.buyer.id }
+                                    buyer={ item }
+                                    key={ item.id }
                                     total={ item.trade.length }
                                     handler={ this.setCurrentBuyer.bind(this) }
                                 />
@@ -61,8 +61,8 @@ export default class Left extends Component {
                         <tbody>
                         {
                             buyers.map(item => (
-                                isCurrentBuyer && isCurrentBuyer === item.buyer.id
-                                    ? <Trade key={ item.buyer.id } { ...item } />
+                                isCurrentBuyer && isCurrentBuyer === item.id
+                                    ? <Trade key={ item.id } trade={ item.trade } />
                                     : null
                             ))
                         }

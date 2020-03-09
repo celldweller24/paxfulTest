@@ -28,8 +28,8 @@ export default class Right extends Component {
                         {
                             data.map(item => (
                                 <BuyerWithPayment
-                                    { ...item }
-                                    key={ item.buyer.id }
+                                    key={ item.id }
+                                    buyer={ item }
                                     trades={ item.trade }
                                 />
                             ))
