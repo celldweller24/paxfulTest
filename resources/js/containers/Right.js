@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Chat from "../components/Chat";
-import BuyerWithPayment from "../components/BuyerWithPayment";
+import Buyer from "../components/Buyer";
 
 
 export default class Right extends Component {
@@ -9,7 +9,7 @@ export default class Right extends Component {
     }
 
     render() {
-        const data = this.props.buyerWithPayment;
+        const data = this.props.buyers;
         return (
             <div>
                 <h3>Right sidebar</h3>
@@ -27,10 +27,11 @@ export default class Right extends Component {
                         <tbody>
                         {
                             data.map(item => (
-                                <BuyerWithPayment
+                                <Buyer
                                     key={ item.id }
                                     buyer={ item }
-                                    trades={ item.trade }
+                                    trades={ item.trades }
+                                    onClickHandler={ false }
                                 />
                             ))
                         }

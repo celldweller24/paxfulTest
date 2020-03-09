@@ -51,7 +51,7 @@ export default class IndexContainer extends Component {
                             <Middle />
                         </div>
                         <div className="right-side col-xl-4 col-lg-12 col-md-12 col-sm-12">
-                            <Right buyerWithPayment={ items }/>
+                            <Right buyers={ items }/>
                         </div>
                     </div>
                 </div>

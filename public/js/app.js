@@ -65614,8 +65614,6 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
  */
 
 
-__webpack_require__(/*! ./components/Example */ "./resources/js/components/Example.js");
-
 __webpack_require__(/*! ./containers/IndexContainer */ "./resources/js/containers/IndexContainer.js");
 
 /***/ }),
@@ -65705,45 +65703,20 @@ __webpack_require__.r(__webpack_exports__);
 
 var Buyer = function Buyer(_ref) {
   var buyer = _ref.buyer,
-      total = _ref.total,
-      handler = _ref.handler;
+      trades = _ref.trades,
+      onClickHandler = _ref.onClickHandler;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
-    onClick: function onClick() {
-      return handler(buyer.id);
-    }
+    onClick: onClickHandler ? function () {
+      return onClickHandler(buyer.id);
+    } : null
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
     scope: "row"
-  }, buyer.id), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, buyer.first_name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, buyer.reputation_negative), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, buyer.reputation_positive), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, total));
+  }, buyer.id), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, buyer.first_name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, buyer.reputation['negative']), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, buyer.reputation['positive']), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, trades ? new Set(trades.map(function (trade) {
+    return trade.method + " | ";
+  })) : buyer.total));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Buyer);
-
-/***/ }),
-
-/***/ "./resources/js/components/BuyerWithPayment.js":
-/*!*****************************************************!*\
-  !*** ./resources/js/components/BuyerWithPayment.js ***!
-  \*****************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-
-
-var BuyerWithPayment = function BuyerWithPayment(_ref) {
-  var buyer = _ref.buyer,
-      trades = _ref.trades;
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-    scope: "row"
-  }, buyer.id), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, buyer.first_name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, buyer.reputation_negative), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, buyer.reputation_positive), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, new Set(trades.map(function (trade) {
-    return trade.payment.method + " | ";
-  }))));
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (BuyerWithPayment);
 
 /***/ }),
 
@@ -65784,80 +65757,6 @@ var Chat = function Chat() {
 
 /***/ }),
 
-/***/ "./resources/js/components/Example.js":
-/*!********************************************!*\
-  !*** ./resources/js/components/Example.js ***!
-  \********************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Example; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-
-
-
-var Example = /*#__PURE__*/function (_Component) {
-  _inherits(Example, _Component);
-
-  function Example() {
-    _classCallCheck(this, Example);
-
-    return _possibleConstructorReturn(this, _getPrototypeOf(Example).apply(this, arguments));
-  }
-
-  _createClass(Example, [{
-    key: "render",
-    value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "row justify-content-center"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-md-8"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card-header"
-      }, "Example Component"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card-body"
-      }, "I'm an example component!")))));
-    }
-  }]);
-
-  return Example;
-}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
-
-
-
-if (document.getElementById('example')) {
-  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Example, null), document.getElementById('example'));
-}
-
-/***/ }),
-
 /***/ "./resources/js/components/Trade.js":
 /*!******************************************!*\
   !*** ./resources/js/components/Trade.js ***!
@@ -65872,13 +65771,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var Trade = function Trade(_ref) {
-  var trade = _ref.trade;
-  return trade.map(function (item) {
+  var trades = _ref.trades;
+  return trades[0]['trades'].map(function (item) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
       key: item.id
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
       scope: "row"
-    }, item.id), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, item.status ? 'payed' : 'not payed'), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, item.hash.slice(20, 25)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, item.amount), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, item.payment.method));
+    }, item.id), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, item.status ? 'payed' : 'not payed'), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, item.hash.slice(20, 25)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, item.amount), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, item.method));
   });
 };
 
@@ -65989,7 +65888,7 @@ var IndexContainer = /*#__PURE__*/function (_Component) {
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Middle__WEBPACK_IMPORTED_MODULE_3__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "right-side col-xl-4 col-lg-12 col-md-12 col-sm-12"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Right__WEBPACK_IMPORTED_MODULE_4__["default"], {
-          buyerWithPayment: items
+          buyers: items
         }))));
       }
     }
@@ -66052,7 +65951,7 @@ var Left = /*#__PURE__*/function (_Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Left).call(this, props));
     _this.state = {
-      currentBuyer: ''
+      currentBuyerId: null
     };
     return _this;
   }
@@ -66061,7 +65960,7 @@ var Left = /*#__PURE__*/function (_Component) {
     key: "setCurrentBuyer",
     value: function setCurrentBuyer(buyerId) {
       this.setState({
-        currentBuyer: buyerId
+        currentBuyerId: buyerId
       });
     }
   }, {
@@ -66070,7 +65969,7 @@ var Left = /*#__PURE__*/function (_Component) {
       var _this2 = this;
 
       var buyers = this.props.buyers;
-      var isCurrentBuyer = this.state.currentBuyer;
+      var currentBuyerId = this.state.currentBuyerId;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "buyer-table"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Buyers"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
@@ -66087,10 +65986,10 @@ var Left = /*#__PURE__*/function (_Component) {
         scope: "col"
       }, "Total"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, buyers.map(function (item) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Buyer__WEBPACK_IMPORTED_MODULE_1__["default"], {
-          buyer: item,
           key: item.id,
-          total: item.trade.length,
-          handler: _this2.setCurrentBuyer.bind(_this2)
+          buyer: item,
+          trades: false,
+          onClickHandler: _this2.setCurrentBuyer.bind(_this2)
         });
       })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "trade-tabel"
@@ -66106,12 +66005,11 @@ var Left = /*#__PURE__*/function (_Component) {
         scope: "col"
       }, "Amount"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         scope: "col"
-      }, "Method"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, buyers.map(function (item) {
-        return isCurrentBuyer && isCurrentBuyer === item.id ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Trade__WEBPACK_IMPORTED_MODULE_2__["default"], {
-          key: item.id,
-          trade: item.trade
-        }) : null;
-      })))));
+      }, "Method"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, currentBuyerId ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Trade__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        trades: buyers.filter(function (item) {
+          return item.id === currentBuyerId;
+        })
+      }) : null))));
     }
   }]);
 
@@ -66158,7 +66056,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _components_Chat__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/Chat */ "./resources/js/components/Chat.js");
-/* harmony import */ var _components_BuyerWithPayment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/BuyerWithPayment */ "./resources/js/components/BuyerWithPayment.js");
+/* harmony import */ var _components_Buyer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/Buyer */ "./resources/js/components/Buyer.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -66193,7 +66091,7 @@ var Right = /*#__PURE__*/function (_Component) {
   _createClass(Right, [{
     key: "render",
     value: function render() {
-      var data = this.props.buyerWithPayment;
+      var data = this.props.buyers;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Right sidebar"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "buyer-with-payment-table"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
@@ -66209,10 +66107,11 @@ var Right = /*#__PURE__*/function (_Component) {
       }, "Positive reputation"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         scope: "col"
       }, "Method"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, data.map(function (item) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_BuyerWithPayment__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Buyer__WEBPACK_IMPORTED_MODULE_2__["default"], {
           key: item.id,
           buyer: item,
-          trades: item.trade
+          trades: item.trades,
+          onClickHandler: false
         });
       })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Chat__WEBPACK_IMPORTED_MODULE_1__["default"], null));
     }

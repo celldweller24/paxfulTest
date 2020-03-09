@@ -8,7 +8,7 @@ class IndexController extends Controller
 {
     public function index() {
 
-        $data = Buyer::with('trade')->get();
-        return json_encode($data);
+        $data = Buyer::all();
+        return $data->toJson();
     }
 }

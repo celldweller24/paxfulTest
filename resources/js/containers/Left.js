@@ -6,17 +6,17 @@ export default class Left extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            currentBuyer: ''
+            currentBuyerId: null
         };
     }
 
     setCurrentBuyer(buyerId) {
-        this.setState({ currentBuyer: buyerId })
+        this.setState({ currentBuyerId: buyerId })
     }
 
     render() {
         const buyers = this.props.buyers;
-        const isCurrentBuyer = this.state.currentBuyer;
+        const currentBuyerId = this.state.currentBuyerId;
 
         return (
             <div>
@@ -36,10 +36,10 @@ export default class Left extends Component {
                         {
                             buyers.map(item => (
                                 <Buyer
-                                    buyer={ item }
                                     key={ item.id }
-                                    total={ item.trade.length }
-                                    handler={ this.setCurrentBuyer.bind(this) }
+                                    buyer={ item }
+                                    trades={ false }
+                                    onClickHandler={ this.setCurrentBuyer.bind(this) }
                                 />
                             ))
                         }
@@ -59,13 +59,11 @@ export default class Left extends Component {
                         </tr>
                         </thead>
                         <tbody>
-                        {
-                            buyers.map(item => (
-                                isCurrentBuyer && isCurrentBuyer === item.id
-                                    ? <Trade key={ item.id } trade={ item.trade } />
+                            {
+                                currentBuyerId
+                                    ? <Trade trades={ buyers.filter(item => item.id === currentBuyerId) }/>
                                     : null
-                            ))
-                        }
+                            }
                         </tbody>
                     </table>
                 </div>

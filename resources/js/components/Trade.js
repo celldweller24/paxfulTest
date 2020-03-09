@@ -1,15 +1,14 @@
 import React from 'react';
 
-const Trade = ({ trade }) => {
+const Trade = ({ trades }) => {
     return (
-        trade.map(item => (
+        trades[0]['trades'].map(item => (
             <tr key={ item.id }>
                 <th scope="row">{ item.id }</th>
                 <td>{ item.status ? 'payed' : 'not payed'}</td>
                 <td>{ item.hash.slice(20, 25) }</td>
-                {/* Can be replaced by exchange conversion function */}
                 <td>{ item.amount }</td>
-                <td>{ item.payment.method }</td>
+                <td>{ item.method }</td>
             </tr>
         ))
     )
