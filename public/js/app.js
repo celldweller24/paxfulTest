@@ -65665,6 +65665,125 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /***/ }),
 
+/***/ "./resources/js/components/Button.js":
+/*!*******************************************!*\
+  !*** ./resources/js/components/Button.js ***!
+  \*******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var Button = function Button(_ref) {
+  var buttonText = _ref.buttonText;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    type: "button",
+    className: "btn btn-primary"
+  }, buttonText);
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Button);
+
+/***/ }),
+
+/***/ "./resources/js/components/Buyer.js":
+/*!******************************************!*\
+  !*** ./resources/js/components/Buyer.js ***!
+  \******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var Buyer = function Buyer(_ref) {
+  var buyer = _ref.buyer,
+      total = _ref.total,
+      handler = _ref.handler;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+    onClick: function onClick() {
+      return handler(buyer.id);
+    }
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+    scope: "row"
+  }, buyer.id), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, buyer.first_name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, buyer.reputation_negative), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, buyer.reputation_positive), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, total));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Buyer);
+
+/***/ }),
+
+/***/ "./resources/js/components/BuyerWithPayment.js":
+/*!*****************************************************!*\
+  !*** ./resources/js/components/BuyerWithPayment.js ***!
+  \*****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var BuyerWithPayment = function BuyerWithPayment(_ref) {
+  var buyer = _ref.buyer,
+      trades = _ref.trades;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+    scope: "row"
+  }, buyer.id), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, buyer.first_name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, buyer.reputation_negative), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, buyer.reputation_positive), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, new Set(trades.map(function (trade) {
+    return trade.method + " | ";
+  }))));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (BuyerWithPayment);
+
+/***/ }),
+
+/***/ "./resources/js/components/Chat.js":
+/*!*****************************************!*\
+  !*** ./resources/js/components/Chat.js ***!
+  \*****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Button__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Button */ "./resources/js/components/Button.js");
+
+
+
+var Chat = function Chat() {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "chat-window"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "chat-control"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form-group"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: "exampleFormControlTextarea1"
+  }, "Type your message here"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
+    className: "form-control",
+    id: "exampleFormControlTextarea1",
+    rows: "3"
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Button__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    buttonText: "Send"
+  })));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Chat);
+
+/***/ }),
+
 /***/ "./resources/js/components/Example.js":
 /*!********************************************!*\
   !*** ./resources/js/components/Example.js ***!
@@ -65739,6 +65858,34 @@ if (document.getElementById('example')) {
 
 /***/ }),
 
+/***/ "./resources/js/components/Trade.js":
+/*!******************************************!*\
+  !*** ./resources/js/components/Trade.js ***!
+  \******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var Trade = function Trade(_ref) {
+  var trade = _ref.trade;
+  return trade.map(function (item) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+      key: item.id
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+      scope: "row"
+    }, item.id), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, item.status ? 'payed' : 'not payed'), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, item.hash.slice(20, 25)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, item.amount), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, item.method));
+  });
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Trade);
+
+/***/ }),
+
 /***/ "./resources/js/containers/IndexContainer.js":
 /*!***************************************************!*\
   !*** ./resources/js/containers/IndexContainer.js ***!
@@ -65753,6 +65900,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _Left__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Left */ "./resources/js/containers/Left.js");
+/* harmony import */ var _Middle__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Middle */ "./resources/js/containers/Middle.js");
+/* harmony import */ var _Right__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Right */ "./resources/js/containers/Right.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -65774,29 +65924,74 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
+
+
 var IndexContainer = /*#__PURE__*/function (_Component) {
   _inherits(IndexContainer, _Component);
 
-  function IndexContainer() {
+  function IndexContainer(props) {
+    var _this;
+
     _classCallCheck(this, IndexContainer);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(IndexContainer).apply(this, arguments));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(IndexContainer).call(this, props));
+    _this.state = {
+      error: null,
+      isLoaded: false,
+      items: []
+    };
+    return _this;
   }
 
   _createClass(IndexContainer, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      fetch("api/data").then(function (response) {
+        return response.json();
+      }).then(function (result) {
+        _this2.setState({
+          isLoaded: true,
+          items: result
+        });
+      }, function (error) {
+        _this2.setState({
+          isLoaded: true,
+          error: error
+        });
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "row"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-md-4"
-      }, "first"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-md-4"
-      }, "second"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-md-4"
-      }, "third")));
+      var _this$state = this.state,
+          error = _this$state.error,
+          isLoaded = _this$state.isLoaded,
+          items = _this$state.items;
+
+      if (error) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Error: ", error.message);
+      } else if (!isLoaded) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Loading...");
+      } else {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "container-fluid"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "row"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "left-side col-xl-4 col-lg-12 col-md-12 col-sm-12"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Left__WEBPACK_IMPORTED_MODULE_2__["default"], {
+          buyers: items
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "middle-side col-xl-4 col-lg-12 col-md-12 col-sm-12"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Middle__WEBPACK_IMPORTED_MODULE_3__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "right-side col-xl-4 col-lg-12 col-md-12 col-sm-12"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Right__WEBPACK_IMPORTED_MODULE_4__["default"], {
+          buyerWithPayment: items
+        }))));
+      }
     }
   }]);
 
@@ -65808,6 +66003,227 @@ var IndexContainer = /*#__PURE__*/function (_Component) {
 if (document.getElementById('root')) {
   react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(IndexContainer, null), document.getElementById('root'));
 }
+
+/***/ }),
+
+/***/ "./resources/js/containers/Left.js":
+/*!*****************************************!*\
+  !*** ./resources/js/containers/Left.js ***!
+  \*****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Left; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _components_Buyer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/Buyer */ "./resources/js/components/Buyer.js");
+/* harmony import */ var _components_Trade__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/Trade */ "./resources/js/components/Trade.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+var Left = /*#__PURE__*/function (_Component) {
+  _inherits(Left, _Component);
+
+  function Left(props) {
+    var _this;
+
+    _classCallCheck(this, Left);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Left).call(this, props));
+    _this.state = {
+      currentBuyer: ''
+    };
+    return _this;
+  }
+
+  _createClass(Left, [{
+    key: "setCurrentBuyer",
+    value: function setCurrentBuyer(buyerId) {
+      this.setState({
+        currentBuyer: buyerId
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      var buyers = this.props.buyers;
+      var isCurrentBuyer = this.state.currentBuyer;
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "buyer-table"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Buyers"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
+        className: "table"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        scope: "col"
+      }, "BiD"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        scope: "col"
+      }, "Firstname"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        scope: "col"
+      }, "Negative reputation"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        scope: "col"
+      }, "Positive reputation"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        scope: "col"
+      }, "Total"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, buyers.map(function (item) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Buyer__WEBPACK_IMPORTED_MODULE_1__["default"], _extends({}, item, {
+          key: item.buyer.id,
+          total: item.trade.length,
+          handler: _this2.setCurrentBuyer.bind(_this2)
+        }));
+      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "trade-tabel"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Trades"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
+        className: "table"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        scope: "col"
+      }, "TiD"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        scope: "col"
+      }, "Status"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        scope: "col"
+      }, "Hash"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        scope: "col"
+      }, "Amount"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        scope: "col"
+      }, "Method"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, buyers.map(function (item) {
+        return isCurrentBuyer && isCurrentBuyer === item.buyer.id ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Trade__WEBPACK_IMPORTED_MODULE_2__["default"], _extends({
+          key: item.buyer.id
+        }, item)) : null;
+      })))));
+    }
+  }]);
+
+  return Left;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+
+
+/***/ }),
+
+/***/ "./resources/js/containers/Middle.js":
+/*!*******************************************!*\
+  !*** ./resources/js/containers/Middle.js ***!
+  \*******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _components_Chat__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/Chat */ "./resources/js/components/Chat.js");
+
+
+
+var Middle = function Middle() {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Trade private chat"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Chat__WEBPACK_IMPORTED_MODULE_1__["default"], null));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Middle);
+
+/***/ }),
+
+/***/ "./resources/js/containers/Right.js":
+/*!******************************************!*\
+  !*** ./resources/js/containers/Right.js ***!
+  \******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Right; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _components_Chat__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/Chat */ "./resources/js/components/Chat.js");
+/* harmony import */ var _components_BuyerWithPayment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/BuyerWithPayment */ "./resources/js/components/BuyerWithPayment.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+var Right = /*#__PURE__*/function (_Component) {
+  _inherits(Right, _Component);
+
+  function Right(props) {
+    _classCallCheck(this, Right);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(Right).call(this, props));
+  }
+
+  _createClass(Right, [{
+    key: "render",
+    value: function render() {
+      var data = this.props.buyerWithPayment;
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Right sidebar"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "buyer-with-payment-table"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
+        className: "table"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        scope: "col"
+      }, "BiD"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        scope: "col"
+      }, "Firstname"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        scope: "col"
+      }, "Negative reputation"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        scope: "col"
+      }, "Positive reputation"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        scope: "col"
+      }, "Method"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, data.map(function (item) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_BuyerWithPayment__WEBPACK_IMPORTED_MODULE_2__["default"], _extends({}, item, {
+          key: item.buyer.id,
+          trades: item.trade
+        }));
+      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Chat__WEBPACK_IMPORTED_MODULE_1__["default"], null));
+    }
+  }]);
+
+  return Right;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+
+;
 
 /***/ }),
 

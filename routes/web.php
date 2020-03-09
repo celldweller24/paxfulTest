@@ -14,3 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('api/data', 'IndexController@index');
+
+Route::get('trades/rates', 'RateController@index');

@@ -10882,3 +10882,42 @@ a.text-dark:focus {
   }
 }
 
+.left-side,
+.middle-side,
+.right-side {
+  margin-top: 15px;
+}
+
+.middle-side {
+  border-left: 1.5px solid #ced4da;
+  border-right: 1.5px solid #ced4da;
+  border-radius: 0.25rem;
+}
+
+.buyer-table tbody tr {
+  cursor: pointer;
+}
+
+.buyer-table tbody tr:hover {
+  background-color: lightgreen;
+}
+
+.chat-window {
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  height: 20em;
+}
+
+.chat-control {
+  margin-top: 15px;
+}
+
+.chat-control .form-control {
+  margin-bottom: 15px;
+}
+
+.chat-control button {
+  float: right;
+  clear: both;
+}
+
