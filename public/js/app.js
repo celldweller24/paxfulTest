@@ -65705,15 +65705,19 @@ var Buyer = function Buyer(_ref) {
   var buyer = _ref.buyer,
       trades = _ref.trades,
       onClickHandler = _ref.onClickHandler;
+  var firstname = buyer.first_name;
+  var negativeReputation = buyer.reputation['negative'];
+  var positiveReputation = buyer.reputation['positive'];
+  var method = trades ? new Set(trades.map(function (trade) {
+    return trade.method + " | ";
+  })) : buyer.total;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
     onClick: onClickHandler ? function () {
       return onClickHandler(buyer.id);
     } : null
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
     scope: "row"
-  }, buyer.id), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, buyer.first_name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, buyer.reputation['negative']), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, buyer.reputation['positive']), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, trades ? new Set(trades.map(function (trade) {
-    return trade.method + " | ";
-  })) : buyer.total));
+  }, buyer.id), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, firstname), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, negativeReputation), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, positiveReputation), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, method));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Buyer);
@@ -65771,13 +65775,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var Trade = function Trade(_ref) {
-  var trades = _ref.trades;
-  return trades[0]['trades'].map(function (item) {
+  var currentBuyer = _ref.currentBuyer;
+  var trades = currentBuyer.shift().trades;
+  return trades.map(function (item) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
       key: item.id
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
       scope: "row"
-    }, item.id), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, item.status ? 'payed' : 'not payed'), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, item.hash.slice(20, 25)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, item.amount), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, item.method));
+    }, item.id), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, item.status ? 'paid' : 'not paid'), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, item.hash.slice(20, 25)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, item.amount), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, item.method));
   });
 };
 
@@ -65970,6 +65975,9 @@ var Left = /*#__PURE__*/function (_Component) {
 
       var buyers = this.props.buyers;
       var currentBuyerId = this.state.currentBuyerId;
+      var currentBuyer = buyers.filter(function (item) {
+        return item.id === currentBuyerId;
+      });
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "buyer-table"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Buyers"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
@@ -66006,9 +66014,7 @@ var Left = /*#__PURE__*/function (_Component) {
       }, "Amount"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         scope: "col"
       }, "Method"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, currentBuyerId ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Trade__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        trades: buyers.filter(function (item) {
-          return item.id === currentBuyerId;
-        })
+        currentBuyer: currentBuyer
       }) : null))));
     }
   }]);

@@ -12,16 +12,16 @@ class Buyer extends Model
         return $this->hasMany(Trade::class);
     }
 
-    public function toArray() {
+    /*public function toArray() {
         return [
             'id' => $this->id,
             'first_name' => $this->first_name,
-            'total' => count($this->trade->toArray()),
+            'total' => $this->trade() ->count(),
             'trades' => $this->trade->toArray(),
             'reputation' => [
                 'negative' => $this->reputation_negative,
                 'positive' => $this->reputation_positive
             ]
         ];
-    }
+    }*/
 }

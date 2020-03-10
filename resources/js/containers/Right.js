@@ -10,6 +10,7 @@ export default class Right extends Component {
 
     render() {
         const data = this.props.buyers;
+
         return (
             <div>
                 <h3>Right sidebar</h3>

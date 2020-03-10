@@ -30,7 +30,10 @@ class AddRelationsToTradesTable extends Migration
     public function down()
     {
         Schema::table('trades', function (Blueprint $table) {
-            //
+            $table->dropForeig('buyer_id');
+            $table->dropColumn('buyer_id');
+            $table->dropForeig('payment_id');
+            $table->dropColumn('payment_id');
         });
     }
 }

@@ -17,6 +17,7 @@ export default class Left extends Component {
     render() {
         const buyers = this.props.buyers;
         const currentBuyerId = this.state.currentBuyerId;
+        const currentBuyer = buyers.filter(item => item.id === currentBuyerId);
 
         return (
             <div>
@@ -61,7 +62,7 @@ export default class Left extends Component {
                         <tbody>
                             {
                                 currentBuyerId
-                                    ? <Trade trades={ buyers.filter(item => item.id === currentBuyerId) }/>
+                                    ? <Trade currentBuyer={ currentBuyer }/>
                                     : null
                             }
                         </tbody>

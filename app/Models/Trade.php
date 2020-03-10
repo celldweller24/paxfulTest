@@ -12,7 +12,7 @@ class Trade extends Model
         return $this->belongsTo(Payment::class);
     }
 
-    public function toArray() {
+    /*public function toArray() {
         return [
             'id' => $this->id,
             'status' => $this->status,
@@ -20,5 +20,5 @@ class Trade extends Model
             'method' => $this->payment->method,
             'amount' => $this->amount
         ];
-    }
+    }*/
 }
