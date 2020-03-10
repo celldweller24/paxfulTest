@@ -12,22 +12,9 @@ class BuyerCollection extends ResourceCollection
      * @param  \Illuminate\Http\Request  $request
      * @return array
      */
-    public function toArray($request)
-    {
-        return $this->collection;
-        /*return [
-            'id' => $this->collection->get("id")->first(),
-            'first_name' => $this->collection->get('first_name'),
-            'reputation' => [
-                'negative' => $this->collection->get('reputation_negative'),
-                'positive' => $this->collection->get('reputation_positive')
-            ]
-        ];*/
+    public function toArray($request) {
+        ResourceCollection::withoutWrapping();
 
-        /*return [
-            'data' => $this->collection->map(function ($order) use ($request) {
-                return (new OrderResource($order))->toArray($request);
-            })
-        ];*/
+        return $this->collection;
     }
 }

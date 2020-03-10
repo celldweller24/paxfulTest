@@ -65703,21 +65703,21 @@ __webpack_require__.r(__webpack_exports__);
 
 var Buyer = function Buyer(_ref) {
   var buyer = _ref.buyer,
-      trades = _ref.trades,
-      onClickHandler = _ref.onClickHandler;
+      lastColumn = _ref.lastColumn,
+      _ref$onClickHandler = _ref.onClickHandler,
+      onClickHandler = _ref$onClickHandler === void 0 ? function () {
+    return false;
+  } : _ref$onClickHandler;
   var firstname = buyer.first_name;
   var negativeReputation = buyer.reputation['negative'];
   var positiveReputation = buyer.reputation['positive'];
-  var method = trades ? new Set(trades.map(function (trade) {
-    return trade.method + " | ";
-  })) : buyer.total;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
-    onClick: onClickHandler ? function () {
+    onClick: function onClick() {
       return onClickHandler(buyer.id);
-    } : null
+    }
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
     scope: "row"
-  }, buyer.id), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, firstname), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, negativeReputation), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, positiveReputation), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, method));
+  }, buyer.id), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, firstname), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, negativeReputation), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, positiveReputation), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, lastColumn));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Buyer);
@@ -65996,7 +65996,7 @@ var Left = /*#__PURE__*/function (_Component) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Buyer__WEBPACK_IMPORTED_MODULE_1__["default"], {
           key: item.id,
           buyer: item,
-          trades: false,
+          lastColumn: item.total,
           onClickHandler: _this2.setCurrentBuyer.bind(_this2)
         });
       })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -66095,8 +66095,17 @@ var Right = /*#__PURE__*/function (_Component) {
   }
 
   _createClass(Right, [{
+    key: "getMethod",
+    value: function getMethod(item) {
+      return new Set(item.trades.map(function (trade) {
+        return trade.method + " | ";
+      }));
+    }
+  }, {
     key: "render",
     value: function render() {
+      var _this = this;
+
       var data = this.props.buyers;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Right sidebar"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "buyer-with-payment-table"
@@ -66116,8 +66125,7 @@ var Right = /*#__PURE__*/function (_Component) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Buyer__WEBPACK_IMPORTED_MODULE_2__["default"], {
           key: item.id,
           buyer: item,
-          trades: item.trades,
-          onClickHandler: false
+          lastColumn: _this.getMethod(item)
         });
       })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Chat__WEBPACK_IMPORTED_MODULE_1__["default"], null));
     }

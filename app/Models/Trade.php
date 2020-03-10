@@ -8,17 +8,9 @@ class Trade extends Model
 {
     protected $fillable = ['status', 'hash', 'amount'];
 
+    protected $with = ['payment'];
+
     public function payment() {
         return $this->belongsTo(Payment::class);
     }
-
-    /*public function toArray() {
-        return [
-            'id' => $this->id,
-            'status' => $this->status,
-            'hash' => $this->hash,
-            'method' => $this->payment->method,
-            'amount' => $this->amount
-        ];
-    }*/
 }

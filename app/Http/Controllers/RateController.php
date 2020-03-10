@@ -8,6 +8,6 @@ class RateController extends Controller
 {
     public function index() {
         $rate = Rate::all();
-        return json_encode($rate);
+        return $rate->toJson();
     }
 }

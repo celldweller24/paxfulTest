@@ -39,7 +39,7 @@ export default class Left extends Component {
                                 <Buyer
                                     key={ item.id }
                                     buyer={ item }
-                                    trades={ false }
+                                    lastColumn={ item.total }
                                     onClickHandler={ this.setCurrentBuyer.bind(this) }
                                 />
                             ))

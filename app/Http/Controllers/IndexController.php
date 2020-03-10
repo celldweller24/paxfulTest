@@ -9,7 +9,7 @@ class IndexController extends Controller
 {
     public function index() {
 
-        $data = BuyerCollection::collection(Buyer::all());
-        return $data->toJson();
+        return (new BuyerCollection(Buyer::all()
+            ->load('trades')));
     }
 }

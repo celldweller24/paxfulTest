@@ -8,6 +8,10 @@ export default class Right extends Component {
         super(props);
     }
 
+    getMethod(item) {
+        return new Set(item.trades.map(trade => trade.method + " | "));
+    }
+
     render() {
         const data = this.props.buyers;
 
@@ -31,8 +35,7 @@ export default class Right extends Component {
                                 <Buyer
                                     key={ item.id }
                                     buyer={ item }
-                                    trades={ item.trades }
-                                    onClickHandler={ false }
+                                    lastColumn={ this.getMethod(item) }
                                 />
                             ))
                         }
