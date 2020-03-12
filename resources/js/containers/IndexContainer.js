@@ -1,21 +1,15 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
+import { requestApiData } from "../store/actions";
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
+
 import Left from "./Left";
 import Middle from "./Middle";
 import Right from "./Right";
 
-export default class IndexContainer extends Component {
+class IndexContainer extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            error: null,
-            isLoaded: false,
-            items: []
-        };
-    }
-
-    componentDidMount() {
+    /*componentDidMount() {
         fetch("api/data")
             .then(response => response.json())
             .then(
@@ -32,10 +26,15 @@ export default class IndexContainer extends Component {
                     });
                 }
             )
+    }*/
+
+    componentDidMount() {
+        requestApiData();
     }
 
     render() {
-        const { error, isLoaded, items } = this.state;
+        console.log(this.props);
+        /*const { error, isLoaded, items } = this.state;
         if (error) {
             return <div>Error: { error.message }</div>;
         } else if (!isLoaded) {
@@ -56,10 +55,16 @@ export default class IndexContainer extends Component {
                     </div>
                 </div>
             );
-        }
+        }*/
+        return (
+            <div></div>
+        );
     }
 }
 
-if (document.getElementById('root')) {
-    ReactDOM.render(<IndexContainer />, document.getElementById('root'));
-}
+const mapStateToProps = state => ({ data: state.data });
+
+const mapDispatchToProps = dispatch =>
+    bindActionCreators({ requestApiData }, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(IndexContainer);
