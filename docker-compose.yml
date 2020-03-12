@@ -1,9 +1,23 @@
 version: "3.4"
+
+x-common-variables: &common-variables
+  MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
+
 services:
+  mysql:
+    image: mysql:5.7
+    environment:
+      <<: *common-variables
+      MYSQL_HOST: localhost
+    ports:
+      - 3306:3306
   app:
-    container_name: test_php_react
+    container_name: testAssignment
     build:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "9090:80"
+      - "8080:80"
+    command: ["./wait_for_db.sh"]
+    depends_on:
+      - mysql
