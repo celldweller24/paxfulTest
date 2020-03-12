@@ -24,7 +24,7 @@ Laravel development server started: <http://0.0.0.0:80>
 
 ## Configuration
 
-The configuration is set via environment vars in [docker-compose.yml](docker-compose.yml) file. When changes have been made  please rebuild the images with:
+The configuration is mainly set via environment vars in [docker-compose.yml](docker-compose.yml) file. Whenever changes are made outside the environment please rebuild with:
 
 ```
 $docker-compose up -d --build
