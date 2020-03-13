@@ -73215,15 +73215,16 @@ var IndexContainer = /*#__PURE__*/function (_Component) {
 
 var mapStateToProps = function mapStateToProps(state) {
   return {
-    data: state.data
+    data: state
   };
 };
 
-var mapDispatchToProps = function mapDispatchToProps(dispatch) {
-  return Object(redux__WEBPACK_IMPORTED_MODULE_2__["bindActionCreators"])({
-    requestApiData: _store_actions__WEBPACK_IMPORTED_MODULE_1__["requestApiData"]
-  }, dispatch);
+var mapDispatchToProps = function mapDispatchToProps() {
+  _store_actions__WEBPACK_IMPORTED_MODULE_1__["requestApiData"];
 };
+/*const mapDispatchToProps = dispatch =>
+    bindActionCreators({ requestApiData }, dispatch);*/
+
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_3__["connect"])(mapStateToProps, mapDispatchToProps)(IndexContainer));
 
@@ -73542,7 +73543,7 @@ var fetchDataAsync = /*#__PURE__*/function () {
           case 3:
             response = _context.sent;
             _context.next = 6;
-            return response.json();
+            return response;
 
           case 6:
             data = _context.sent;
@@ -73613,8 +73614,11 @@ export default (state = initialState, action) => {
     }
 };*/
 
+var initialState = {
+  data: {}
+};
 /* harmony default export */ __webpack_exports__["default"] = (function () {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
 
   var _ref = arguments.length > 1 ? arguments[1] : undefined,
       type = _ref.type,

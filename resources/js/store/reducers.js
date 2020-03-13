@@ -35,7 +35,11 @@ export default (state = initialState, action) => {
 
 import { RECEIVE_API_DATA } from "./actions";
 
-export default (state = {}, { type, data }) => {
+const initialState = {
+    data: {}
+};
+
+export default (state = initialState, { type, data }) => {
     switch (type) {
         case RECEIVE_API_DATA:
             return data;
