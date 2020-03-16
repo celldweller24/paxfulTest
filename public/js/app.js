@@ -73219,12 +73219,11 @@ var mapStateToProps = function mapStateToProps(state) {
   };
 };
 
-var mapDispatchToProps = function mapDispatchToProps() {
-  _store_actions__WEBPACK_IMPORTED_MODULE_1__["requestApiData"];
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return Object(redux__WEBPACK_IMPORTED_MODULE_2__["bindActionCreators"])({
+    requestApiData: _store_actions__WEBPACK_IMPORTED_MODULE_1__["requestApiData"]
+  }, dispatch);
 };
-/*const mapDispatchToProps = dispatch =>
-    bindActionCreators({ requestApiData }, dispatch);*/
-
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_3__["connect"])(mapStateToProps, mapDispatchToProps)(IndexContainer));
 

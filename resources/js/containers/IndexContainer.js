@@ -64,9 +64,7 @@ class IndexContainer extends Component {
 
 const mapStateToProps = state => ({ data: state });
 
-const mapDispatchToProps = () => { requestApiData };
-
-/*const mapDispatchToProps = dispatch =>
-    bindActionCreators({ requestApiData }, dispatch);*/
+const mapDispatchToProps = dispatch =>
+    bindActionCreators({ requestApiData }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(IndexContainer);
