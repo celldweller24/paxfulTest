@@ -7,10 +7,8 @@ services:
     environment:
       MYSQL_ALLOW_EMPTY_PASSWORD: "true"
   app:
+    image: maximfox/testassignment-php:1.0
     container_name: testAssignment_app
-    build:
-      context: .
-      dockerfile: Dockerfile
     environment:
       APP_KEY:
       DB_CONNECTION: mysql
