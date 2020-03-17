@@ -8,38 +8,17 @@ import Middle from "./Middle";
 import Right from "./Right";
 
 class IndexContainer extends Component {
-
-    /*componentDidMount() {
-        fetch("api/data")
-            .then(response => response.json())
-            .then(
-                (result) => {
-                    this.setState({
-                        isLoaded: true,
-                        items: result
-                    });
-                },
-                (error) => {
-                    this.setState({
-                        isLoaded: true,
-                        error
-                    });
-                }
-            )
-    }*/
+    constructor(props) {
+        super(props);
+    }
 
     componentDidMount() {
-        requestApiData();
+        this.props.requestApiData();
     }
 
     render() {
-        console.log(this.props);
-        /*const { error, isLoaded, items } = this.state;
-        if (error) {
-            return <div>Error: { error.message }</div>;
-        } else if (!isLoaded) {
-            return <div>Loading...</div>;
-        } else {
+        const items = this.props.data;
+        if (Array.isArray(items)) {
             return (
                 <div className="container-fluid">
                     <div className="row">
@@ -55,10 +34,12 @@ class IndexContainer extends Component {
                     </div>
                 </div>
             );
-        }*/
-        return (
-            <div></div>
-        );
+        }
+        else {
+            return (
+              <div>Loading...</div>
+          )
+        }
     }
 }
 

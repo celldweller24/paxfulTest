@@ -1,8 +1,7 @@
 export const fetchDataAsync = async () => {
     try {
         const response = await fetch("api/data");
-        const data = await response;
-        return data;
+        return await response.json();
     } catch (e) {
         console.log(e);
     }

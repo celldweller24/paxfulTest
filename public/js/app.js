@@ -73149,64 +73149,41 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 var IndexContainer = /*#__PURE__*/function (_Component) {
   _inherits(IndexContainer, _Component);
 
-  function IndexContainer() {
+  function IndexContainer(props) {
     _classCallCheck(this, IndexContainer);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(IndexContainer).apply(this, arguments));
+    return _possibleConstructorReturn(this, _getPrototypeOf(IndexContainer).call(this, props));
   }
 
   _createClass(IndexContainer, [{
     key: "componentDidMount",
-
-    /*componentDidMount() {
-        fetch("api/data")
-            .then(response => response.json())
-            .then(
-                (result) => {
-                    this.setState({
-                        isLoaded: true,
-                        items: result
-                    });
-                },
-                (error) => {
-                    this.setState({
-                        isLoaded: true,
-                        error
-                    });
-                }
-            )
-    }*/
     value: function componentDidMount() {
-      Object(_store_actions__WEBPACK_IMPORTED_MODULE_1__["requestApiData"])();
+      this.props.requestApiData();
     }
   }, {
     key: "render",
     value: function render() {
-      console.log(this.props);
-      /*const { error, isLoaded, items } = this.state;
-      if (error) {
-          return <div>Error: { error.message }</div>;
-      } else if (!isLoaded) {
-          return <div>Loading...</div>;
-      } else {
-          return (
-              <div className="container-fluid">
-                  <div className="row">
-                      <div className="left-side col-xl-4 col-lg-12 col-md-12 col-sm-12">
-                          <Left buyers={ items } />
-                      </div>
-                      <div className="middle-side col-xl-4 col-lg-12 col-md-12 col-sm-12">
-                          <Middle />
-                      </div>
-                      <div className="right-side col-xl-4 col-lg-12 col-md-12 col-sm-12">
-                          <Right buyers={ items }/>
-                      </div>
-                  </div>
-              </div>
-          );
-      }*/
+      var items = this.props.data;
 
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null);
+      if (Array.isArray(items)) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "container-fluid"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "row"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "left-side col-xl-4 col-lg-12 col-md-12 col-sm-12"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Left__WEBPACK_IMPORTED_MODULE_4__["default"], {
+          buyers: items
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "middle-side col-xl-4 col-lg-12 col-md-12 col-sm-12"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Middle__WEBPACK_IMPORTED_MODULE_5__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "right-side col-xl-4 col-lg-12 col-md-12 col-sm-12"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Right__WEBPACK_IMPORTED_MODULE_6__["default"], {
+          buyers: items
+        }))));
+      } else {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Loading...");
+      }
     }
   }]);
 
@@ -73471,29 +73448,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_API_DATA", function() { return RECEIVE_API_DATA; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "requestApiData", function() { return requestApiData; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveApiData", function() { return receiveApiData; });
-/*
-export const REQUEST_API_DATA = 'REQUEST_API_DATA';
-export const REQUEST_API_DATA_SUCCEEDED = 'REQUEST_API_DATA_SUCCEEDED';
-export const REQUEST_API_DATA_FAILED = 'REQUEST_API_DATA_FAILED';
-export const FETCH_API_DATA = 'FETCH_API_DATA';
-
-export const requestApiData = () => {
-    return { type: 'REQUEST_API_DATA' }
-};
-
-export const requestApiDataSuccess = (data) => {
-    return { type: 'REQUEST_API_DATA_SUCCEEDED', url: data }
-};
-
-export const requestApiDataError = () => {
-    return { type: 'REQUEST_API_DATA_FAILED' }
-};
-
-export const fetchApiData = () => {
-    return { type: 'FETCH_API_DATA' }
-};
-
-*/
 var REQUEST_API_DATA = "REQUEST_API_DATA";
 var RECEIVE_API_DATA = "RECEIVE_API_DATA";
 var requestApiData = function requestApiData() {
@@ -73530,7 +73484,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 var fetchDataAsync = /*#__PURE__*/function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-    var response, data;
+    var response;
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
@@ -73542,23 +73496,22 @@ var fetchDataAsync = /*#__PURE__*/function () {
           case 3:
             response = _context.sent;
             _context.next = 6;
-            return response;
+            return response.json();
 
           case 6:
-            data = _context.sent;
-            return _context.abrupt("return", data);
+            return _context.abrupt("return", _context.sent);
 
-          case 10:
-            _context.prev = 10;
+          case 9:
+            _context.prev = 9;
             _context.t0 = _context["catch"](0);
             console.log(_context.t0);
 
-          case 13:
+          case 12:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee, null, [[0, 10]]);
+    }, _callee, null, [[0, 9]]);
   }));
 
   return function fetchDataAsync() {
@@ -73578,46 +73531,9 @@ var fetchDataAsync = /*#__PURE__*/function () {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./actions */ "./resources/js/store/actions.js");
-/*
-import { REQUEST_API_DATA,
-         REQUEST_API_DATA_SUCCEEDED,
-         REQUEST_API_DATA_FAILED } from "./actions";
 
-const initialState = {
-    url: '',
-    loading: false,
-    error: false,
-};
-export default (state = initialState, action) => {
-    switch (action.type) {
-        case 'REQUEST_API_DATA':
-            return {
-                url: '',
-                loading: true,
-                error: false,
-            };
-        case 'REQUEST_API_DATA_SUCCEEDED':
-            return {
-                url: action,
-                loading: false,
-                error: false,
-            };
-        case 'REQUEST_API_DATA_FAILED':
-            return {
-                url: '',
-                loading: false,
-                error: true,
-            };
-        default:
-            return state;
-    }
-};*/
-
-var initialState = {
-  data: {}
-};
 /* harmony default export */ __webpack_exports__["default"] = (function () {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
   var _ref = arguments.length > 1 ? arguments[1] : undefined,
       type = _ref.type,
@@ -73657,19 +73573,6 @@ var _marked = /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0
 
 
 
-/*function* fetchApiDataAsync() {
-    try {
-        yield put(requestApiData());
-        const data = yield call(() => {
-                return fetch('api/data')
-                    .then(response => response.json())
-            }
-        );
-        yield put(requestApiDataSuccess(data));
-    } catch (error) {
-        yield put(requestApiDataError());
-    }
-}*/
 
 function getApiData() {
   var data;
